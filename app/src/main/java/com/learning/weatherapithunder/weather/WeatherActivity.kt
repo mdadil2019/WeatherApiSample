@@ -1,9 +1,10 @@
-package com.learning.weatherapithunder
+package com.learning.weatherapithunder.weather
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.learning.weatherapithunder.R
 
-class MainActivity : AppCompatActivity() {
+class WeatherActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
