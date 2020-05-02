@@ -1,5 +1,9 @@
 package com.learning.weatherapithunder.repo.local.model
 
+import androidx.databinding.BaseObservable
+import androidx.databinding.Bindable
+import java.text.SimpleDateFormat
+
 data class WeatherResponse(
     val base: String,
     val clouds: Clouds,
@@ -12,8 +16,14 @@ data class WeatherResponse(
     val sys: Sys,
     val timezone: Int,
     val weather: List<Weather>,
-    val wind: Wind
-){
+    val wind: Wind,
+
+    @Bindable
+    var cityName : String,
+
+
+    var lastFetchedTime : String
+) : BaseObservable(){
     data class Clouds(
         val all: Int
     )
@@ -32,7 +42,11 @@ data class WeatherResponse(
         val temp: Double,
         val temp_max: Double,
         val temp_min: Double
-    )
+    ){
+        fun getTempInCelcius(): String{
+            return (temp - ("273.15").toFloat()).toString()
+        }
+    }
 
     data class Sys(
         val country: String,
@@ -52,4 +66,10 @@ data class WeatherResponse(
         val deg: Int,
         val speed: Double
     )
+
+     fun updateLastFetchedTime(){
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+        val formattedDate: String = dateFormat.format(System.currentTimeMillis())
+        lastFetchedTime = formattedDate
+    }
 }
