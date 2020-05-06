@@ -11,8 +11,6 @@ import java.util.concurrent.TimeUnit
 
 object Networking {
 
-    private const val TIME_OUT = 60
-    lateinit var API_KEY : String
     private const val NETWORK_CALL_TIMEOUT = 60
 
 

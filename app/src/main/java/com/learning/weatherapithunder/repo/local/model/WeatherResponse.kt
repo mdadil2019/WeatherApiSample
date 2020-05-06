@@ -18,12 +18,9 @@ data class WeatherResponse(
     val weather: List<Weather>,
     val wind: Wind,
 
-    @Bindable
-    var cityName : String,
-
 
     var lastFetchedTime : String
-) : BaseObservable(){
+){
     data class Clouds(
         val all: Int
     )

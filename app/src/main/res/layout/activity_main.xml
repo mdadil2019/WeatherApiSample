@@ -3,8 +3,7 @@
     <data>
         <variable
             name="vm"
-            type="com.learning.weatherapithunder.weather.WeatherActivityViewModel"
-            />
+            type="com.learning.weatherapithunder.weather.WeatherActivityViewModel" />
 
     </data>
 
@@ -44,7 +43,7 @@
                 android:layout_marginTop="80dp"
                 android:layout_marginBottom="24dp"
                 android:ems="10"
-                android:text="@={vm.cityWeather.cityName}"
+                android:text="@={vm.cityName}"
                 android:hint="Location"
                 android:inputType="textPersonName"
                 android:textAlignment="center"
@@ -92,7 +91,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_view"
                 android:layout_width="0dp"
-                android:layout_height="299dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
                 app:layout_constraintHorizontal_bias="0.0"

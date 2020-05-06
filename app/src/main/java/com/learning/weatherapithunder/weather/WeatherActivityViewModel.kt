@@ -3,6 +3,7 @@ package com.learning.weatherapithunder.weather
 import android.util.Log
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
+import androidx.databinding.ObservableField
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.learning.weatherapithunder.repo.local.model.WeatherResponse
@@ -17,19 +18,19 @@ import java.util.*
 
 class WeatherActivityViewModel : ViewModel() {
 
-    val cityWeather = MutableLiveData<WeatherResponse>()
+    var cityWeather = ObservableField<WeatherResponse>()
 
-
+    var cityName  = ObservableField<String>("London")
 
     fun updateWeather() {
         val file = File("")
         var disposable = Networking.create(EndPoints.baseUrl, file, 2000)
-            .queryWeather(cityWeather.value?.cityName ?: "London")
+            .queryWeather(cityName.get().toString())
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 it.updateLastFetchedTime()
-                cityWeather.postValue(it)
+                cityWeather.set(it)
             }, {
                 Log.e("Error : ", "$it")
             })
